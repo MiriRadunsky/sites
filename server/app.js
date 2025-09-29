@@ -1,12 +1,15 @@
 const express = require('express');
 const path = require('path');
-const http = require('http');
+// const http = require('http');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
+const cors = require('cors');
 
 const connectDB = require('./db/mongoConnect');
 const { routesInit } = require('./routes/config_routes');
+const { compare } = require('bcrypt');
 
 const app = express();
+app.use(cors());
 
 connectDB();
 

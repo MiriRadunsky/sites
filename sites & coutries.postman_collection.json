@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "77fd9483-bfe7-4b4e-a876-458731cdcd31",
+		"name": "sites & coutries",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "44574302",
+		"_collection_link": "https://miri-3330408.postman.co/workspace/miri's-Workspace~6d9a46b6-36ac-4322-80e4-8246d7c5d7b5/collection/44574302-77fd9483-bfe7-4b4e-a876-458731cdcd31?action=share&source=collection_link&creator=44574302"
+	},
+	"item": [
+		{
+			"name": "add coutry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"GitHub\",\r\n  \"url\": \"https://https://github.com/MiriRadunsky\",\r\n  \"image\": \"https://https://github.com/MiriRadunsky/favicon.ico\",\r\n  \"score\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/sites"
+			},
+			"response": []
+		},
+		{
+			"name": "get countries for user",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"GitHub Updated\",\r\n  \"url\": \"https://github.com\",\r\n  \"image\": \"https://github.com/new-logo.png\",\r\n  \"score\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/sites/68d916680c17735a0c1d1f26"
+			},
+			"response": []
+		},
+		{
+			"name": "del by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:3000/sites/68d916110c17735a0c1d1f24"
+			},
+			"response": []
+		}
+	]
+}

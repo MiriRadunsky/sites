@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '../..', '.env') });
+// require('dotenv').config(); 
+const { config } = require('../config/secret');
 
 const connectDB = async () => {
     try {
-        const mongoURI = process.env.MONGODB_URI;
+        const mongoURI = config.mongoConnectionString;
         
         if (!mongoURI) {
             throw new Error('MONGODB_URI is not defined in environment variables');

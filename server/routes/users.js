@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 const { UserModel, validateUser, validLogin, createToken } = require('../models/userModel');
-const { auth } = require('../middlewares/auth');
+const { auth, authAdmin } = require('../middlewares/auth');
 
 
 router.post('/', async (req, res) => {
@@ -38,7 +38,8 @@ router.post('/login', async (req, res) => {
     const ok = await bcrypt.compare(req.body.password, user.password);
     if (!ok) return res.status(401).json({ msg: 'Password or email is wrong ,code:2' });
 
-    const token = createToken(user._id);
+    console.log('User role:', user.role); // לבדיקה
+    const token = createToken(user);
     res.json({ token });
   } catch (err) {
     console.error(err);
@@ -67,6 +68,14 @@ router.get('/myInfo', auth, async (req, res) => {
   }
 });
 
-
+router.get('/allUsers', authAdmin, async (req, res) => {
+  try {
+    const users = await UserModel.find({}, { password: 0, __v: 0 });
+    res.json(users);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: 'err', err });
+  }
+});
 
 module.exports = router;

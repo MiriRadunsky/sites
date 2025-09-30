@@ -1,16 +1,17 @@
 const express = require('express');
 const path = require('path');
-// const http = require('http');
-require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
+
+// require('dotenv').config(); 
+// const { config } = require('../config/secret');
 const cors = require('cors');
 
 const connectDB = require('./db/mongoConnect');
 const { routesInit } = require('./routes/config_routes');
 const { compare } = require('bcrypt');
+const { config } = require('./config/secret');
 
 const app = express();
 app.use(cors());
-
 connectDB();
 
 app.use(express.json());
@@ -34,7 +35,7 @@ console.log(__dirname + " line 11");
 
 routesInit(app);
 
-let port = process.env.PORT || 3000;
+let port = config.port;
 app.listen(port);
 
 
